@@ -4,10 +4,12 @@ import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
     /* 필드 의존성 주입은 외부에서 변경이 불가능
@@ -17,6 +19,7 @@ public class OrderServiceImpl implements OrderService{
      */
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
 
 /*    @Autowired
     public void setMemberRepository(MemberRepository memberRepository) {
@@ -30,12 +33,12 @@ public class OrderServiceImpl implements OrderService{
         this.discountPolicy = discountPolicy;
     }*/
 
-    //@Autowired //필수, 불변
+/*    @Autowired //필수, 불변
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         System.out.println("1. OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
-    }
+    }*/
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
